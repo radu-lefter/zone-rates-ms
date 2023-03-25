@@ -1,5 +1,5 @@
 import Head from 'next/head'
-
+import Title from '../components/Title';
 
 export default function Home() {
   return (
@@ -7,8 +7,11 @@ export default function Home() {
       <Head>
         <title>Zone Rates Microservice</title>
       </Head>
-      <main>
-        <h1>Zone Rates Microservice</h1>
+      <main className="px-6 py-4">
+        <Title>Zone rates</Title>
+        <p>
+          [TODO: display products]
+        </p>
       </main>
     </>
   )
