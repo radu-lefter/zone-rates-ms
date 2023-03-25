@@ -16,31 +16,30 @@ export default function Home({ zones }) {
       <Head>
         <title>Zone Rates Microservice</title>
       </Head>
-      <main className="px-6 py-4">
+      <main className="px-6 py-4 bg-yellow-100">
         <Title>Zone rates</Title>
-        <h2>Search by country</h2>
-        {/* <ul>
-          {countries.map((country) => (
-            <li key={country.id}>
-              {country.country}
-            </li>
-          ))}
-        </ul> */}
-        <h2>Search by zones</h2>
+        <h2>Search for Rate by Country</h2>
+        <p>
+          To make life easier, we've grouped countries into simple Zones - you
+          can search either by country or view the all the destinations in a
+          charging zone.{' '}
+        </p>
+
+        <h2 className='bg-sky-600 text-white'>Search for Destinations by Zone</h2>
         <div className="grid grid-cols-2 gap-3">
-          <div>
+          <div className='text-center'>
             <h3>Landline zones</h3>
             <div className="grid grid-cols-3 gap-2">
               {zones.land_zones.map((zone, i) => (
-                <Zone key={i} zone={zone.zone} />
+                <Zone key={i} zone={zone.zone} tariff={zone.tariff}/>
               ))}
             </div>
           </div>
-          <div>
+          <div className='text-center'>
             <h3>Mobile zones</h3>
             <div className="grid grid-cols-3 gap-2">
               {zones.mob_zones.map((zone, i) => (
-                <Zone key={i} zone={zone.zone} />
+                <Zone key={i} zone={zone.zone} tariff={zone.tariff}/>
               ))}
             </div>
           </div>
