@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Title from "../components/Title";
 import Zone from "../components/Zone";
+import Link from 'next/link';
 import { getZones } from "../lib/zones";
 
 export async function getStaticProps() {
@@ -30,16 +31,19 @@ export default function Home({ zones }) {
           <div className='text-center'>
             <h3>Landline zones</h3>
             <div className="grid grid-cols-3 gap-2">
-              {zones.land_zones.map((zone, i) => (
-                <Zone key={i} zone={zone.zone} tariff={zone.tariff}/>
+              {zones.land_zones.map((zone) => (
+                 <Link href={`/zones/${zone.id}`}>
+                <Zone key={zone.id} zone={zone.zone} tariff={zone.tariff}/>
+                </Link>
               ))}
             </div>
           </div>
           <div className='text-center'>
             <h3>Mobile zones</h3>
             <div className="grid grid-cols-3 gap-2">
-              {zones.mob_zones.map((zone, i) => (
-                <Zone key={i} zone={zone.zone} tariff={zone.tariff}/>
+              {zones.mob_zones.map((zone) => (
+                <Link href={`/zones/${zone.id}`}>
+                <Zone key={zone.id} zone={zone.zone} tariff={zone.tariff}/></Link>
               ))}
             </div>
           </div>
