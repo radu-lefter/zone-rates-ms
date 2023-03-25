@@ -1,2 +1,6 @@
 #get all zones
 GET http://localhost:1337/api/zones
+
+###
+#get zone by id
+GET http://localhost:1337/api/zones/2
