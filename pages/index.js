@@ -1,7 +1,14 @@
 import Head from 'next/head'
 import Title from '../components/Title';
+import { getCountries } from '../lib/zones';
 
-export default function Home() {
+export async function getStaticProps() {
+  console.log('[HomePage] getStaticProps()');
+  const countries = await getCountries();
+  return { props: { countries } };
+}
+
+export default function Home({ countries }) {
   return (
     <>
       <Head>
@@ -9,9 +16,13 @@ export default function Home() {
       </Head>
       <main className="px-6 py-4">
         <Title>Zone rates</Title>
-        <p>
-          [TODO: display products]
-        </p>
+        <ul>
+          {countries.map((country) => (
+            <li key={country.id}>
+              {country.country}
+            </li>
+          ))}
+        </ul>
       </main>
     </>
   )
