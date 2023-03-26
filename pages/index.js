@@ -1,5 +1,4 @@
-import Head from "next/head";
-import Title from "../components/Title";
+import Page from '../components/Page';
 import Zone from "../components/Zone";
 import Link from 'next/link';
 import { getZones } from "../lib/zones";

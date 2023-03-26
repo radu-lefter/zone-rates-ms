@@ -4,3 +4,42 @@ GET http://localhost:1337/api/zones
 ###
 #get zone by id
 GET http://localhost:1337/api/zones/2
+
+###
+#authenticate user
+POST http://localhost:1337/api/auth/local
+Content-Type: application/json
+
+{
+    "identifier": "bogdan@example.com",
+    "password": "Password123"
+}
+
+###
+
+GET http://localhost:1337/api/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc5ODQ1Njc1LCJleHAiOjE2ODI0Mzc2NzV9.upSrfB3eQrFimX7LELc1nnPjYfH8o3A97ALizTQWH9Q
+
+###
+
+POST http://localhost:1337/api/auth/local/register
+Content-Type: application/json
+
+{
+    "username": "Teo",
+    "identifier": "teo@example.com",
+    "password": "Password123"
+}
+
+###
+
+GET http://localhost:3000/api/login
+
+####
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "email": "bogdan@example.com",
+    "password": "Password123"
+}
