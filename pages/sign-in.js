@@ -3,34 +3,60 @@ import Button from "../components/Button";
 import Field from "../components/Field";
 import Input from "../components/Input";
 import { useState } from "react";
-import { fetchJson } from '../lib/api';
+import { fetchJson } from "../lib/api";
 
 function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [status, setStatus] = useState({ loading: false, error: false });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await fetchJson('http://localhost:1337/api/auth/local', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ identifier: email, password }),
-    });
-    console.log('sign in:', response);
+    setStatus({ loading: true, error: false });
+    try {
+      const response = await fetchJson("http://localhost:1337/api/auth/local", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ identifier: email, password }),
+      });
+      setStatus({ loading: false, error: false });
+      console.log("sign in:", response);
+    } catch (err) {
+      setStatus({ loading: false, error: true });
+    }
   };
 
   return (
     <Page title="Sign In">
       <form onSubmit={handleSubmit}>
         <Field label="Email">
-          <Input type="email" required value={email}
-            onChange={(event) => setEmail(event.target.value)}/>
+          <Input
+            type="email"
+            required
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
         </Field>
         <Field label="Password">
-          <Input type="password" required value={password}
-            onChange={(event) => setPassword(event.target.value)} />
+          <Input
+            type="password"
+            required
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
         </Field>
-        <Button type="submit">Sign In</Button>
+        {status.error && (
+          <p className="text-red-700">
+            Invalid credentials
+          </p>
+        )}
+        {status.loading ? (
+          <p>Loading...</p>
+        ) : (
+          <Button type="submit">
+            Sign In
+          </Button>
+        )}
       </form>
     </Page>
   );
