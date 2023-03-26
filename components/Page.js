@@ -6,7 +6,7 @@ function Page({ title, children }) {
   return (
     <>
       <Head>
-        <title>{`${title} - Next Shop`}</title>
+        <title>{`${title} - Zone rates`}</title>
       </Head>
       <header>
         <NavBar />

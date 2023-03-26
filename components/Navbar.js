@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { fetchJson } from "../lib/api";
+import { useRouter } from 'next/router'
 
 function NavBar() {
+  const router = useRouter();
   const [user, setUser] = useState();
   useEffect(() => {
     (async () => {
@@ -20,16 +22,23 @@ function NavBar() {
     setUser(undefined);
   };
 
+  const handleAdmin =  () => {
+    router.push('/admin-panel');
+  };
+
   return (
     <nav className="px-2 py-1 text-sm">
       <ul className="flex gap-2">
         <li className="text-lg font-extrabold">
-          <Link href="/">Next Shop</Link>
+          <Link href="/">Zone rates</Link>
         </li>
         <li role="separator" className="flex-1" />
         {user ? (
           <>
-            <li>{user.name}</li>
+            <li>Logged in as {user.name}</li>
+            <li>
+              <button onClick={handleAdmin}>Admin</button>
+            </li>
             <li>
               <button onClick={handleSignOut}>Sign Out</button>
             </li>

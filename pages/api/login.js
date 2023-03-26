@@ -1,4 +1,4 @@
-import { fetchJson } from "../../lib/api";
+import { fetchJson } from "../../lib/api"; 
 import cookie from "cookie";
 
 async function handleLogin(req, res) {
