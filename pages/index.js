@@ -17,7 +17,7 @@ export default function Home({ zones }) {
       <Head>
         <title>Zone Rates Microservice</title>
       </Head>
-      <main className="px-6 py-4 bg-yellow-100">
+      <main className="px-6 py-4 bg-yellow-100 h-screen">
         <Title>Zone rates</Title>
         <h2>Search for Rate by Country</h2>
         <p>
@@ -32,8 +32,8 @@ export default function Home({ zones }) {
             <h3>Landline zones</h3>
             <div className="grid grid-cols-3 gap-2">
               {zones.land_zones.map((zone) => (
-                 <Link href={`/zones/${zone.id}`}>
-                <Zone key={zone.id} zone={zone.zone} tariff={zone.tariff}/>
+                 <Link key={zone.id} href={`/zones/${zone.id}`}>
+                <Zone  zone={zone.zone} tariff={zone.tariff}/>
                 </Link>
               ))}
             </div>
@@ -42,8 +42,8 @@ export default function Home({ zones }) {
             <h3>Mobile zones</h3>
             <div className="grid grid-cols-3 gap-2">
               {zones.mob_zones.map((zone) => (
-                <Link href={`/zones/${zone.id}`}>
-                <Zone key={zone.id} zone={zone.zone} tariff={zone.tariff}/></Link>
+                <Link key={zone.id} href={`/zones/${zone.id}`}>
+                <Zone zone={zone.zone} tariff={zone.tariff}/></Link>
               ))}
             </div>
           </div>
