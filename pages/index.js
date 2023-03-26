@@ -1,6 +1,7 @@
-import Page from '../components/Page';
+import Head from "next/head";
 import Zone from "../components/Zone";
 import Link from 'next/link';
+import Title from '../components/Title';
 import { getZones } from "../lib/zones";
 
 export async function getStaticProps() {
