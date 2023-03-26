@@ -12,7 +12,7 @@ function NavBar() {
         const user = await fetchJson("/api/user");
         setUser(user);
       } catch (err) {
-        // not signed in
+        // not signed in 
       }
     })();
   }, []);

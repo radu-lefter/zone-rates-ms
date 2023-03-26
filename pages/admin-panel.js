@@ -1,18 +1,38 @@
 import Head from "next/head";
-import Link from 'next/link';
 import Title from '../components/Title';
 import { getZones } from "../lib/zones";
 import NavBar from '../components/NavBar';
 import { FaTrash } from "react-icons/fa";
 import { FaPen } from "react-icons/fa";
+import { useRouter } from 'next/router'
+import { fetchJson } from "../lib/api";
 
 export async function getStaticProps() {
+  
   console.log("[Admin Panel] getStaticProps()");
   const zones = await getZones();
   return { props: { zones }, revalidate: 5 * 60 }; // seconds
 }
 
 export default function Home({ zones }) {
+
+  const router = useRouter();
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetchJson("/api/delete", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      console.log("sign in:", response);
+      router.push('/admin-panel');
+    } catch (err) {
+      console.log(err)
+    }
+    
+  };
+
   return (
     <>
       <Head>
@@ -25,7 +45,7 @@ export default function Home({ zones }) {
         <Title>Admin Panel</Title>
         <table className="min-w-full text-left text-sm font-light">
           <thead
-            class="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
+            className="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
             <tr>
               <th scope="col" className="px-6 py-4">Id</th>
               <th scope="col" className="px-6 py-4">Zone</th>
@@ -44,7 +64,7 @@ export default function Home({ zones }) {
               <td className="whitespace-nowrap px-6 py-4">{zone.tariff}</td>
               <td className="whitespace-nowrap px-6 py-4">{zone.countries.join('__')}</td>
               <td className="whitespace-nowrap px-2 py-4"><FaPen /></td>
-              <td className="whitespace-nowrap px-2 py-4"><FaTrash /></td>
+              <td className="whitespace-nowrap px-2 py-4"><button onClick={()=>{handleDelete(zone.id)}}><FaTrash /></button></td>
             </tr>
              ))}
           </tbody>
