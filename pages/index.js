@@ -3,6 +3,7 @@ import Zone from "../components/Zone";
 import Link from 'next/link';
 import Title from '../components/Title';
 import { getZones } from "../lib/zones";
+import NavBar from '../components/NavBar';
 
 export async function getStaticProps() {
   console.log("[HomePage] getStaticProps()");
@@ -17,6 +18,9 @@ export default function Home({ zones }) {
       <Head>
         <title>Zone Rates Microservice</title>
       </Head>
+      <header>
+        <NavBar />
+      </header>
       <main className="px-6 py-4 bg-yellow-100 h-screen">
         <Title>Zone rates</Title>
         <h2>Search for Rate by Country</h2>

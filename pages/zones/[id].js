@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Title from "../../components/Title";
 import { getZone, getZones } from "../../lib/zones";
+import NavBar from '../../components/NavBar';
 
 export async function getStaticPaths() {
   const zones = await getZones();
@@ -31,6 +32,9 @@ function ZonePage({ zone }) {
       <Head>
         <title>Zone Rates</title>
       </Head>
+      <header>
+        <NavBar />
+      </header>
       <main className="px-6 py-4 bg-yellow-100 h-screen">
       <Title className='bg-sky-600 text-white'>Rates for {zone.zone}</Title>
       <table class="min-w-full text-left text-sm font-light">
