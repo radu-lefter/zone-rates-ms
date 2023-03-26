@@ -8,15 +8,20 @@ export async function getStaticPaths() {
     paths: zones.flat.map((zone) => ({
       params: { id: zone.id.toString() },
     })),
-    fallback: false,
+    fallback: 'blocking',
   };
 }
 
 export async function getStaticProps({ params: { id } }) {
+  try {
   const zone = await getZone(id);
   return {
     props: { zone },
+    revalidate: 5 * 60
   };
+} catch (err) {
+  return { notFound: true };
+}
 }
 
 function ZonePage({ zone }) {
