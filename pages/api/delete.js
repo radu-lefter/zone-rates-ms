@@ -12,7 +12,7 @@ async function handleDelete(req, res) {
     return;
   }
   const { id } = req.body;
-  console.log(jwt)
+  //console.log(jwt)
   try {
     await fetchJson(`http://127.0.0.1:1337/api/zones/${id}`, {
       method: "DELETE",

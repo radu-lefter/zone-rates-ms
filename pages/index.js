@@ -37,7 +37,7 @@ export default function Home({ zones }) {
             <div className="grid grid-cols-3 gap-2">
               {zones.land_zones.map((zone) => (
                  <Link key={zone.id} href={`/zones/${zone.id}`}>
-                <Zone  zone={zone.zone} tariff={zone.tariff}/>
+                <Zone zone={zone.zone} tariff={zone.tariff}/>
                 </Link>
               ))}
             </div>

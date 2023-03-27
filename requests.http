@@ -49,3 +49,15 @@ Content-Type: application/json
 DELETE http://localhost:1337/api/zones/2
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc5ODU2MzM0LCJleHAiOjE2ODI0NDgzMzR9.DVZfYGKolmUKwhD3ZgnsMUQjTc9VfvKT9FRnT8sxcHk
+
+###
+
+POST http://localhost:1337/api/zones
+Content-Type: application/json
+
+{"data":{
+    "zone": "Zone 3",
+    "tariff": "3",
+    "countries": "Uganda, Congo"
+    } 
+}

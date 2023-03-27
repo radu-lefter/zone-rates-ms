@@ -57,7 +57,7 @@ export default function Home({ zones }) {
           </thead>
           <tbody>
           {zones.flat.map((zone, i) => (
-            <tr
+            <tr key={i}
               className="border-b bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700">
               <td className="whitespace-nowrap px-6 py-4 font-medium">{zone.id}</td>
               <td className="whitespace-nowrap px-6 py-4">{zone.zone}</td>
