@@ -61,3 +61,15 @@ Content-Type: application/json
     "countries": "Uganda, Congo"
     } 
 }
+
+###
+
+PUT http://localhost:1337/api/zones/4
+Content-Type: application/json
+
+{"data":{
+    "zone": "Mob Zone A",
+    "tariff": "1",
+    "countries": "Uganda, Congo"
+    } 
+}
