@@ -29,8 +29,11 @@ export default function Home({ zones }) {
       router.push('/admin-panel');
     } catch (err) {
       console.log(err)
-    }
-    
+    } 
+  };
+
+  const handleCreate =  () => {
+    router.push('/create-zone');
   };
 
   return (
@@ -43,6 +46,7 @@ export default function Home({ zones }) {
       </header>
       <main className="px-6 py-4 bg-yellow-100 h-screen">
         <Title>Admin Panel</Title>
+        <button className="bg-sky-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-4" onClick={handleCreate}>Create new entry</button>
         <table className="min-w-full text-left text-sm font-light">
           <thead
             className="border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600">
